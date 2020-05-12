@@ -1,13 +1,15 @@
 from telegram.ext import Updater
 import logging
+from telegram.ext import CommandHandler
+from telegram.ext import MessageHandler, Filters
 from telegram import InlineQueryResultArticle, InputTextMessageContent
+from telegram.ext import InlineQueryHandler
 import requests
 
 updater = Updater(token='816720263:AAHFSFCQjqIP9yXVUleESaYQRPCGSK04sFU', use_context=True)
 dispatcher = updater.dispatcher
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                      level=logging.INFO)
-cats = 0
 
 def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="呱呱呱~!")
