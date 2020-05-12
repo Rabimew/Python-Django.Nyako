@@ -1,15 +1,14 @@
 from telegram.ext import Updater
 import logging
-from telegram.ext import CommandHandler
-from telegram.ext import MessageHandler, Filters
 from telegram import InlineQueryResultArticle, InputTextMessageContent
-from telegram.ext import InlineQueryHandler
+import requests
 
 updater = Updater(token='816720263:AAHFSFCQjqIP9yXVUleESaYQRPCGSK04sFU', use_context=True)
 dispatcher = updater.dispatcher
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                      level=logging.INFO)
-cats=0
+cats = 0
+
 def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="呱呱呱~!")
     print(f'用户{update.effective_chat.id}发送了{update.message.text},我回复了呱呱呱~!')
@@ -19,7 +18,14 @@ def echo(update, context):
         context.bot.send_message(chat_id=update.effective_chat.id, text=f'你好鸭{update.effective_chat.id},今天吃小猫了吗！')
         print(f'用户{update.effective_chat.id}发送了{update.message.text},我回复了今天吃小猫了吗！')
     else:
-        context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text*2)
+        s = update.message.text
+        resp = requests.post("http://www.tuling123.com/openapi/api", data={
+            "key": "d59c41e816154441ace453269ea08dba",
+            "info": s,
+            "userid": "Nyako"
+        })
+        resp = resp.json()
+        context.bot.send_message(chat_id=update.effective_chat.id, text=resp['text'])
         print(f'用户{update.effective_chat.id}发送了{update.message.text},我回复了{update.message.text*2}')
 
 def caps(update, context):
