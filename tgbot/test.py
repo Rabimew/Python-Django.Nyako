@@ -10,7 +10,7 @@ updater = Updater(token='816720263:AAHFSFCQjqIP9yXVUleESaYQRPCGSK04sFU', use_con
 dispatcher = updater.dispatcher
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                      level=logging.INFO)
-
+cats=0
 def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="呱呱呱~!")
     print(f'用户{update.effective_chat.id}发送了{update.message.text},我回复了呱呱呱~!')
