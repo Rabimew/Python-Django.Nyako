@@ -55,7 +55,7 @@ ROOT_URLCONF = 'Nyako.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [##在这里配置网址
+        'DIRS': [##在这里配置模板目录
             os.path.join(BASE_DIR,"templates")
         ],
         'APP_DIRS': True,
