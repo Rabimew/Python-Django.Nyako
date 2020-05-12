@@ -11,14 +11,22 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                      level=logging.INFO)
 
 def start(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")
+    context.bot.send_message(chat_id=update.effective_chat.id, text="呱呱呱~!")
 
 def echo(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
+    if update.message.text=='你好':
+        context.bot.send_message(chat_id=update.effective_chat.id, text=f'你好鸭{update.effective_chat.id},今天吃小猫了吗！')
+    else:
+        context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text*2)
 
 def caps(update, context):
     text_caps = ' '.join(context.args).upper()
     context.bot.send_message(chat_id=update.effective_chat.id, text=text_caps)
+
+def eatcat(update, context):
+    text_caps = ' '.join(context.args).upper()
+    context.bot.send_message(chat_id=update.effective_chat.id, text='小猫好吃！！！！！！！！！！！！！！')
+
 
 def inline_caps(update, context):
     query = update.inline_query.query
@@ -35,7 +43,7 @@ def inline_caps(update, context):
     context.bot.answer_inline_query(update.inline_query.id, results)
 
 def unknown(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="Sorry, I didn't understand that command.")
+    context.bot.send_message(chat_id=update.effective_chat.id, text="嘤嘤嘤我看不懂这个啦")
 
 
 start_handler = CommandHandler('start', start)
@@ -47,6 +55,9 @@ dispatcher.add_handler(echo_handler)
 
 caps_handler = CommandHandler('caps', caps)
 dispatcher.add_handler(caps_handler)
+
+eatcat_handler = CommandHandler('eatcat', eatcat)
+dispatcher.add_handler(eatcat_handler)
 
 inline_caps_handler = InlineQueryHandler(inline_caps)
 dispatcher.add_handler(inline_caps_handler)
