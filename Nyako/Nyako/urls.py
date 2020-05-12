@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,re_path
-from Nyako.views.index import index,page,date
+from Nyako.views.index import index,page,date,template_exampl
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
     re_path('page/(?P<id>\\d+)/', page),
     re_path('date/(?P<year>\\d{4})/(?P<month>\\d{2})/(?P<day>\\d{2})/', date),
+    path('exampl/', template_exampl),
 ]

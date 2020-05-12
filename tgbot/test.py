@@ -1,68 +1,55 @@
-from telethon.sync import TelegramClient
+from telegram.ext import Updater
+import logging
+from telegram.ext import CommandHandler
+from telegram.ext import MessageHandler, Filters
+from telegram import InlineQueryResultArticle, InputTextMessageContent
+from telegram.ext import InlineQueryHandler
 
-api_id = 816720263
-api_hash = 'AAHFSFCQjqIP9yXVUleESaYQRPCGSK04sFU'
-bot_token = '816720263:AAHFSFCQjqIP9yXVUleESaYQRPCGSK04sFU'
+updater = Updater(token='816720263:AAHFSFCQjqIP9yXVUleESaYQRPCGSK04sFU', use_context=True)
+dispatcher = updater.dispatcher
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                     level=logging.INFO)
 
-# We have to manually call "start" if we want an explicit bot token
-bot = TelegramClient('bot', api_id, api_hash).start(bot_token=bot_token)
+def start(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")
 
-client = TelegramClient('anon', api_id, api_hash)
+def echo(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
 
-async def main():
-    # Getting information about yourself
-    me = await client.get_me()
+def caps(update, context):
+    text_caps = ' '.join(context.args).upper()
+    context.bot.send_message(chat_id=update.effective_chat.id, text=text_caps)
 
-    # "me" is an User object. You can pretty-print
-    # any Telegram object with the "stringify" method:
-    print(me.stringify())
-
-    # When you print something, you see a representation of it.
-    # You can access all attributes of Telegram objects with
-    # the dot operator. For example, to get the username:
-    username = me.username
-    print(username)
-    print(me.phone)
-
-    # You can print all the dialogs/conversations that you are part of:
-    async for dialog in client.iter_dialogs():
-        print(dialog.name, 'has ID', dialog.id)
-
-    # You can send messages to yourself...
-    await client.send_message('me', 'Hello, myself!')
-    # ...to some chat ID
-    await client.send_message(-100123456, 'Hello, group!')
-    # ...to your contacts
-    await client.send_message('+34600123123', 'Hello, friend!')
-    # ...or even to any username
-    await client.send_message('TelethonChat', 'Hello, Telethon!')
-
-    # You can, of course, use markdown in your messages:
-    message = await client.send_message(
-        'me',
-        'This message has **bold**, `code`, __italics__ and '
-        'a [nice website](https://example.com)!',
-        link_preview=False
+def inline_caps(update, context):
+    query = update.inline_query.query
+    if not query:
+        return
+    results = list()
+    results.append(
+        InlineQueryResultArticle(
+            id=query.upper(),
+            title='Caps',
+            input_message_content=InputTextMessageContent(query.upper())
+        )
     )
+    context.bot.answer_inline_query(update.inline_query.id, results)
 
-    # Sending a message returns the sent message object, which you can use
-    print(message.raw_text)
+def unknown(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Sorry, I didn't understand that command.")
 
-    # You can reply to messages directly if you have a message object
-    await message.reply('Cool!')
 
-    # Or send files, songs, documents, albums...
-    await client.send_file('me', '/home/me/Pictures/holidays.jpg')
+start_handler = CommandHandler('start', start)
+dispatcher.add_handler(start_handler)
+updater.start_polling()
 
-    # You can print the message history of any chat:
-    async for message in client.iter_messages('me'):
-        print(message.id, message.text)
+echo_handler = MessageHandler(Filters.text & (~Filters.command), echo)
+dispatcher.add_handler(echo_handler)
 
-        # You can download media from messages, too!
-        # The method will return the path where the file was saved.
-        if message.photo:
-            path = await message.download_media()
-            print('File saved to', path)  # printed after download is done
+caps_handler = CommandHandler('caps', caps)
+dispatcher.add_handler(caps_handler)
 
-with client:
-    client.loop.run_until_complete(main())
+inline_caps_handler = InlineQueryHandler(inline_caps)
+dispatcher.add_handler(inline_caps_handler)
+
+unknown_handler = MessageHandler(Filters.command, unknown)
+dispatcher.add_handler(unknown_handler)
