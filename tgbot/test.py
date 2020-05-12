@@ -29,6 +29,7 @@ def caps(update, context):
 
 def eatcat(update, context):
     text_caps = ' '.join(context.args).upper()
+    global cats
     cats=cats+1
     context.bot.send_message(chat_id=update.effective_chat.id, text=f'{cats}小猫好吃！！！！！！！！！！！！！！')
     print(f'用户{update.effective_chat.id}发送了{update.message.text},我回复了{cats}小猫好吃！！！！！！！！！！！！！！')
