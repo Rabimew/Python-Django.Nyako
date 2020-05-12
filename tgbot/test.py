@@ -22,9 +22,9 @@ def echo(update, context):
     else:
         s = update.message.text
         resp = requests.post("http://www.tuling123.com/openapi/api", data={
-            "key": "d59c41e816154441ace453269ea08dba",
+            "key": "8378237cca4e2db3e0a6f8f6233dc8f3",
             "info": s,
-            "userid": "Nyako"
+            "userid": update.effective_chat.id
         })
         resp = resp.json()
         context.bot.send_message(chat_id=update.effective_chat.id, text=resp['text'])
