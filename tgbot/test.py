@@ -5,6 +5,7 @@ from telegram.ext import MessageHandler, Filters
 from telegram import InlineQueryResultArticle, InputTextMessageContent
 from telegram.ext import InlineQueryHandler
 import requests
+import os
 
 updater = Updater(token='816720263:AAHFSFCQjqIP9yXVUleESaYQRPCGSK04sFU', use_context=True)
 dispatcher = updater.dispatcher
