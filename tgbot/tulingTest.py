@@ -1,23 +1,18 @@
-import requests
-
-appkey ='8nrDneDzeK8GovFJ'
-s = input()
-resp = requests.post("http://www.tuling123.com/openapi/api", data={
-    "app_id": "2138941863",
-    "info": s,
-    "userid": "Nyako"
-})
+import os
+import time
 
 
 
+filePath = "../Nyako/rizhis/测试日志/"
+state = os.path.exists(filePath)  # 判断路径是否存在
+if state:
+    print("File Exist!")
+else:
+    os.makedirs(filePath)  # 创建目录
+    fileName = '测试日志.txt'
+    f=open(filePath + fileName, 'w',encoding='utf-8')
+    pinglun = open(filePath +'pinglun.txt','w',encoding='utf-8')
+    testNote = '测试文件'
+    f.write(testNote)
+    pinglun.write("")
 
-
-# while 1:
-#     s = input()
-#     resp = requests.post("http://www.tuling123.com/openapi/api", data={
-#         "key": "d59c41e816154441ace453269ea08dba",
-#         "info": s,
-#         "userid": "Nyako"
-#     })
-#     resp = resp.json()
-#     print(resp['text'])

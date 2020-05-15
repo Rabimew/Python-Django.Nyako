@@ -54,7 +54,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.manage">
+  <component name="RunManager" selected="Python.tulingTest">
     <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Nyako" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -120,8 +120,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.manage" />
         <item itemvalue="Python.tulingTest" />
+        <item itemvalue="Python.manage" />
         <item itemvalue="Python.test" />
       </list>
     </recent_temporary>

@@ -35,6 +35,28 @@ def caps(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=text_caps)
     print(f'用户{update.effective_chat.id}发送了{update.message.text},我回复了{text_caps}')
 
+def add_log(update, context):
+
+    fengefu=(update.message.text).index('|')
+    biaoti=(update.message.text)[0:fengefu-1]
+    neirong=(update.message.text)[fengefu+1:]
+    filePath = "../Nyako/rizhis/"+biaoti+"/"
+    state = os.path.exists(filePath)  # 判断路径是否存在
+    if state:
+        print("File Exist!")
+    else:
+        os.makedirs(filePath)  # 创建目录
+        fileName = biaoti+'.txt'
+        f = open(filePath + fileName, 'w', encoding='utf-8')
+        pinglun = open(filePath + 'pinglun.txt', 'w', encoding='utf-8')
+        note = neirong
+        f.write(note)
+        pinglun.write("")
+
+
+    context.bot.send_message(f'日志：{biaoti}已发布')
+    print(f'用户{update.effective_chat.id}发送了{update.message.text},我回复了日志：{biaoti}已发布')
+
 def eatcat(update, context):
     text_caps = ' '.join(context.args).upper()
     global cats
@@ -87,6 +109,9 @@ dispatcher.add_handler(caps_handler)
 
 eatcat_handler = CommandHandler('eatcat', eatcat)
 dispatcher.add_handler(eatcat_handler)
+
+add_log_handler = CommandHandler('addLog', add_log)
+dispatcher.add_handler(add_log_handler)
 
 inline_caps_handler = InlineQueryHandler(inline_caps)
 dispatcher.add_handler(inline_caps_handler)
