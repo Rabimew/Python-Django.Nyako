@@ -55,7 +55,7 @@ def add_log(update, context):
         pinglun.write("")
 
 
-    context.bot.send_message(f'日志：{biaoti}已发布')
+    context.bot.send_message(chat_id=update.effective_chat.id, text=f'日志：{biaoti}已发布')
     print(f'用户{update.effective_chat.id}发送了{update.message.text},我回复了日志：{biaoti}已发布')
 
 def eatcat(update, context):
