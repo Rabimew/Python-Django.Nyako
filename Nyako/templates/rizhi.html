@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>日志</title>
+</head>
+<body>
+<div class="biaoti"><h1>{{ a.title }}</h1></div>
+<div class="neirong">{{ a.txt | linebreaks  }}</div>
+<div class="pinglun">{{ a.pinglun | linebreaks  }}</div>
+<div class="pl">
+<form name="pinglun" action="/pinglun/{{ a.title }}" method="get">
+
+    留言: <input type="text" value="名字" name="username"><input value="留言内容" type="text" name="pl">
+<input type="submit" value="Submit">
+</form>
+</div>
+</body>
+</html>

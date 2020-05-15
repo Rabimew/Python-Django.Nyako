@@ -11,8 +11,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -26,16 +26,20 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tgbot" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/rizhis/测试用日志1" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Nya4\Documents\GitHub\Python-Django.Nyako\Nyako\rizhis\测试用日志1" />
+      <recent name="C:\Users\Nya4\Documents\GitHub\Python-Django.Nyako\Nyako\rizhis\床下有脑浆" />
+      <recent name="C:\Users\Nya4\Documents\GitHub\Nyakoko-Heroku\Nyako\views" />
       <recent name="C:\Users\Nya4\Documents\GitHub\Python-Django.Nyako\Nyako\templates" />
       <recent name="C:\Users\Nya4\Documents\GitHub\Python-Django.Nyako\Nyako\Nyako\static" />
-      <recent name="C:\Users\Nya4\Documents\GitHub\Python-Django.Nyako\Nyako" />
-      <recent name="C:\Users\Nya4\Documents\GitHub\Python-Django.Nyako\Nyako\Nyako" />
-      <recent name="C:\Users\Nya4\Documents\GitHub\Python-Django.Nyako\Nyako\Nyako\views" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Nya4\Documents\GitHub\Python-Django.Nyako\Nyako\rizhis\测试用日志1" />
+      <recent name="C:\Users\Nya4\Documents\GitHub\Nyakoko-Heroku\Nyako" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -50,7 +54,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tulingTest">
+  <component name="RunManager" selected="Python.manage">
     <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Nyako" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -116,9 +120,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.manage" />
         <item itemvalue="Python.tulingTest" />
         <item itemvalue="Python.test" />
-        <item itemvalue="Python.manage" />
       </list>
     </recent_temporary>
   </component>

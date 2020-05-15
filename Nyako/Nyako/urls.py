@@ -14,12 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,re_path
-from Nyako.views.index import index,page,date,template_exampl
+from django.urls import path,re_path,include
+from Nyako.views.index import index,page,date,template_exampl,pinglun
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
-    re_path('page/(?P<id>\\d+)/', page),
+    path('page/<str:title>', page),
+    path('pinglun/<str:title>', pinglun),
     re_path('date/(?P<year>\\d{4})/(?P<month>\\d{2})/(?P<day>\\d{2})/', date),
     path('exampl/', template_exampl),
 ]
