@@ -39,7 +39,7 @@ def caps(update, context):
 def add_log(update, context):
 
     fengefu=(update.message.text).index('|')
-    biaoti=(update.message.text)[0:fengefu-1]
+    biaoti=(update.message.text)[8:fengefu-1]
     neirong=(update.message.text)[fengefu+1:]
     filePath = "../Nyako/rizhis/"+biaoti+"/"
     state = os.path.exists(filePath)  # 判断路径是否存在
