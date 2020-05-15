@@ -110,7 +110,7 @@ dispatcher.add_handler(caps_handler)
 eatcat_handler = CommandHandler('eatcat', eatcat)
 dispatcher.add_handler(eatcat_handler)
 
-add_log_handler = CommandHandler('addLog', add_log)
+add_log_handler = CommandHandler('addlog', add_log)
 dispatcher.add_handler(add_log_handler)
 
 inline_caps_handler = InlineQueryHandler(inline_caps)
