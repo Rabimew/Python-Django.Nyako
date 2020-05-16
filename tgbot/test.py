@@ -22,13 +22,13 @@ def echo(update, context):
         print(f'用户{update.effective_chat.id}发送了{update.message.text},我回复了今天吃小猫了吗！')
     else:
         s = update.message.text
-        resp = requests.post("http://www.tuling123.com/openapi/api", data={
-            "key": "8378237cca4e2db3e0a6f8f6233dc8f3",
-            "info": s,
-            "userid": update.effective_chat.id
+        resp=requests.get("http://api.qingyunke.com/api.php",{
+            'key':'free',
+            'appid':0,
+            'msg':s
         })
         resp = resp.json()
-        context.bot.send_message(chat_id=update.effective_chat.id, text=resp['text'])
+        context.bot.send_message(chat_id=update.effective_chat.id, text=resp['content'])
         print(f'用户{update.effective_chat.id}发送了{update.message.text},我回复了{update.message.text*2}')
 
 def caps(update, context):
